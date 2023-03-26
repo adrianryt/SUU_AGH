@@ -2,10 +2,15 @@
 Środowiska Udostępniania Usług
 
 
-Title page:
- Acronym - Title
-Authors:
-Year, Group:
+Title page: <br>
+Acronym - Kafka22 <br>
+Authors: <br>
+Adrian Ryt <br>
+Dawid Grapa <br>
+Kamil Kurowski <br>
+Ryszard Pręcikowski <br>
+Year, Group: 2023 pt, 16:40 <br>
+
 Structure of the report:
 Contents list
 1. Introduction
