@@ -1,25 +1,21 @@
 # SUU_AGH
-Środowiska Udostępniania Usług
-
-Title page: <br>
-Acronym - Kafka22 <br>
-Authors: <br>
+## Środowiska Udostępniania Usług
+### Kafka22 <br>
+*Authors*: <br>
 Adrian Ryt <br>
 Dawid Grapa <br>
 Kamil Kurowski <br>
 Ryszard Pręcikowski <br>
-Year, Group: 2023 pt, 16:40 <br>
+Year, Group: **2023, pt 16:40** <br>
 
-Structure of the report:
-Contents list
-1. Introduction <br>
+## 1. Introduction <br>
 Kafka Operators on Kuberentes
 Prepare evaluation test suite for kafka running on kuberentes behind the
 operator. Select real life uses cases, with real-life workload. Perform test
 with different Kafka setting. Select the most meaningful metrics for
 evaluation
 
-2. Theoretical background/technology stack <br>
+## 2. Theoretical background/technology stack <br>
 
 Kafka Operators are software tools that help to automate the deployment, management, and operation of Apache Kafka clusters on Kubernetes platforms. Operators are essentially Kubernetes native controllers that extend the Kubernetes API to manage applications or services that are more complex than simple stateless or stateful workloads. By using Operators, developers and DevOps teams can simplify the deployment and management of Kafka clusters, reduce the operational overhead, and improve the resilience and scalability of their applications.
 
@@ -33,22 +29,25 @@ In summary, Kafka Operators on Kubernetes, such as Strimzi, provide a powerful w
 
 
 To run Kafka on Kubernetes we will use:
-Kubernetes deployed on EKS (K8s on EKS)
-Kafka
-Zookeeper
-Strimzi
-Grafana
+- Kubernetes deployed on EKS (K8s on EKS)
+- Kafka
+- Zookeeper
+- Strimzi
+- Grafana
 
-3. Case study concept description
-4. Solution architecture
-5. Environment configuration description
-6. Installation method
-7. How to reproduce - step by step
-1. Infrastructure as Code approach
-8. Demo deployment steps:
-1. Configuration set-up
-2. Data preparation
-3. Execution procedure
-4. Results presentation
-9. Summary – conclusions
-10. References
+## 3. Case study concept description
+
+// TODO   
+
+## 4. Solution architecture
+## 5. Environment configuration description
+## 6. Installation method
+## 7. How to reproduce - step by step
+### 1. Infrastructure as Code approach
+## 8. Demo deployment steps:
+### 1. Configuration set-up
+### 2. Data preparation
+### 3. Execution procedure
+### 4. Results presentation
+## 9. Summary – conclusions
+## 10. References
