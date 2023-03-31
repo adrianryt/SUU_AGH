@@ -37,7 +37,32 @@ To run Kafka on Kubernetes we will use:
 
 ## 3. Case study concept description
 
-// TODO   
+### Introduction:
+Apache Kafka is a popular distributed streaming platform used for real-time data feeds. Deploying and managing Kafka on Kubernetes can be challenging, but the Strimzi operator simplifies the process. In this case study, we will explore the preparation of an evaluation test suite for Kafka running on Kubernetes behind the Strimzi operator. We will select real-life use cases with real-life workloads. Additionally, we will use Grafana to visualize the data.
+
+### Objectives:
+The main objectives of this case study are:
+
+- To prepare an evaluation test suite for Kafka running on Kubernetes behind the Strimzi operator.
+- To select real-life use cases with real-life workloads and perform tests with different Kafka settings.
+- To identify the most meaningful metrics for evaluation.
+- To use Grafana to visualize the data and identify any issues or bottlenecks in the performance of Kafka on Kubernetes.
+
+### Methodology:
+To achieve the objectives of this case study, we will follow the below methodology:
+
+- Identify the use cases: We will select real-life use cases with real-life workloads that are relevant to the organization's business operations.
+
+- Prepare the test environment: We will set up a test environment consisting of a Kubernetes cluster, the Strimzi operator, Apache Kafka, and Grafana.
+
+- Conduct the tests: We will execute the tests and collect the data on various performance metrics. We will use Grafana to visualize the data and identify any issues or bottlenecks.
+
+- Analyze the results: We will analyze the test results to identify the most meaningful metrics for evaluation and identify any issues or bottlenecks that need to be addressed.
+
+- Present the findings: We will present findings, including recommendations for improving the performance and scalability of Kafka running on Kubernetes behind the Strimzi operator.
+
+### Conclusion:
+This case study will provide valuable insights into the preparation of an evaluation test suite for Kafka running on Kubernetes behind the Strimzi operator. By selecting real-life use cases with real-life workloads, we can identify the most meaningful metrics for evaluation and make informed decisions to improve the performance and scalability of Kafka. Using Grafana to visualize the data will help us identify any issues or bottlenecks in the performance of Kafka on Kubernetes and make recommendations for improvement. 
 
 ## 4. Solution architecture
 ## 5. Environment configuration description
