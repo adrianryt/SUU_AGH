@@ -48,3 +48,22 @@ module "eks" {
   }
 
 }
+
+resource "aws_eks_addon" "add_ebs_csi" {
+  cluster_name = local.cluster_name
+  addon_name   = "aws-ebs-csi-driver"
+
+  depends_on = [
+    module.eks,
+  ]
+}
+
+resource "null_resource" "kubectl_get_pods" {
+  provisioner "local-exec" {
+    command = "aws eks update-kubeconfig --region us-east-1 --name ${local.cluster_name} ${var.separator} kubectl create ns kafka ${var.separator} kubectl create -f https://strimzi.io/install/latest?namespace=kafka -n kafka ${var.separator} kubectl apply --wait -f https://raw.githubusercontent.com/adrianryt/SUU_AGH/main/resources/yaml/kafka-ephemeral.yaml -n kafka ${var.separator} kubectl apply --wait -f https://raw.githubusercontent.com/adrianryt/SUU_AGH/main/resources/yaml/kafka-metrics.yaml -n kafka ${var.separator} kubectl apply --wait -f https://raw.githubusercontent.com/adrianryt/SUU_AGH/main/resources/yaml/prometheus-operator-deployment.yaml -n kafka ${var.separator} kubectl apply --wait -f https://raw.githubusercontent.com/adrianryt/SUU_AGH/main/resources/yaml/prometheus-additional.yaml -n kafka ${var.separator} kubectl apply --wait -f https://raw.githubusercontent.com/adrianryt/SUU_AGH/main/resources/yaml/strimzi-pod-monitor.yaml -n kafka ${var.separator} kubectl apply --wait -f https://raw.githubusercontent.com/adrianryt/SUU_AGH/main/resources/yaml/prometheus-rules.yaml -n kafka ${var.separator} kubectl apply --wait --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.63.0/example/prometheus-operator-crd/monitoring.coreos.com_alertmanagerconfigs.yaml ${var.separator} kubectl apply --wait --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.63.0/example/prometheus-operator-crd/monitoring.coreos.com_alertmanagers.yaml ${var.separator} kubectl apply --wait --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.63.0/example/prometheus-operator-crd/monitoring.coreos.com_podmonitors.yaml ${var.separator} kubectl apply --wait --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.63.0/example/prometheus-operator-crd/monitoring.coreos.com_probes.yaml ${var.separator} kubectl apply --wait --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.63.0/example/prometheus-operator-crd/monitoring.coreos.com_prometheuses.yaml ${var.separator} kubectl apply --wait --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.63.0/example/prometheus-operator-crd/monitoring.coreos.com_prometheusrules.yaml ${var.separator} kubectl apply --wait --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.63.0/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml ${var.separator} kubectl apply --wait --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.63.0/example/prometheus-operator-crd/monitoring.coreos.com_thanosrulers.yaml ${var.separator} kubectl apply --wait -f https://raw.githubusercontent.com/adrianryt/SUU_AGH/main/resources/yaml/prometheus.yaml -n kafka ${var.separator} kubectl apply --wait -f https://raw.githubusercontent.com/adrianryt/SUU_AGH/main/resources/yaml/grafana.yaml -n kafka"
+  }
+
+  depends_on = [
+    aws_eks_addon.add_ebs_csi,
+  ]
+}

@@ -30,4 +30,10 @@ variable "role_arn" {
   default     = "to-change" // TODO
 }
 
+variable "separator" {
+  description = "Command line separator. If using windows use '&', if using macOS use ';'"
+  type = string
+  default = "&" // TODO
+}
+
 
