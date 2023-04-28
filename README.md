@@ -74,7 +74,30 @@ This case study will provide valuable insights into the preparation of an evalua
 
 
 ## 5. Environment configuration description
+
+To be able to run this project, you are obligatored to have installed:
+- AWS cli
+- Terrafom
+- Kubectl
+
+1. First step is to configure your AWS credentials. Please use `aws configure` and then enter all requested details.
+2. Next step is to add session token to ~/.aws/credentials file. It should look like:
+```
+[default]
+aws_access_key_id = <access_key>
+aws_secret_access_key = <secret_access_key>
+aws_session_token = <session_token>
+```
+
+Now, your environment is prepared to move to the next step.
+
 ## 6. Installation method
+
+To install all required packages etc., the best way is to use offical website for each of them.
+- AWS cli - https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+- Terraform - https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
+- Kubectl - https://kubernetes.io/docs/tasks/tools/
+
 ## 7. How to reproduce - step by step
 ### 1. Infrastructure as Code approach
 ## 8. Demo deployment steps:
