@@ -81,7 +81,7 @@ To be able to run this project, you are obligatored to have installed:
 - Kubectl
 
 1. First step is to configure your AWS credentials. Please use `aws configure` and then enter all requested details.
-2. Next step is to add session token to ~/.aws/credentials file. It should look like:
+2. Next step is to add session token to `~/.aws/credentials` file. It should look like:
 ```
 [default]
 aws_access_key_id = <access_key>
