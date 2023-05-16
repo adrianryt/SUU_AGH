@@ -109,6 +109,10 @@ cd SUU_AGH
 Next step is to run terraform commands.
 ```
 cd resources/terraform
+```
+Update the cariables.tf file and run 
+
+```
 terraform init
 terraform plan
 terraform apply
@@ -131,8 +135,10 @@ The last step is to set up Prometheus <br>
 Go to the localhost:3000 <br>
 Login with credentials user: admin pass: admin <br>
 Open 'Source' tab and select 'Data sources' then choose Prometheus <br>
-In the url write 'http://prometheus-operated:9090/'
+In the url write 'http://prometheus-operated:9090/' <br>
 Import jsons from resources directory
+![image](https://github.com/adrianryt/SUU_AGH/assets/72470330/2f764adf-42ca-4884-9710-7f199b4e4b0a)
+
 
 ## 8. Demo deployment steps:
 ### 1. Configuration set-up
