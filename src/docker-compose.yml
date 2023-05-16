@@ -13,7 +13,6 @@ services:
     image: confluentinc/cp-kafka:latest
     depends_on:
       - zookeeper-1
-
     ports:
       - 29092:29092
     environment:
@@ -25,21 +24,59 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
 
-  consumer:
+  consumer_ligth_1:
     depends_on:
       - kafka-1
     network_mode: host
-    image: consumer
+    build: ./consumer
     environment:
       host: "localhost:29092"
-      topic: "example"
-      DOCKER_DEFAULT_PLATFORM: linux/amd64
+      topics: "light"
 
-  producer:
+  consumer_ligth_2:
     depends_on:
-      - consumer
+      - kafka-1
     network_mode: host
-    image: producer
+    build: ./consumer
     environment:
-      topic: "example"
       host: "localhost:29092"
+      topics: "light"
+
+  consumer_temp:
+    depends_on:
+      - kafka-1
+    network_mode: host
+    build: ./consumer
+    environment:
+      host: "localhost:29092"
+      topics: "warm,cold"
+
+
+  producer_0:
+    depends_on:
+      - kafka-1
+    network_mode: host
+    build: ./producer
+    restart: always
+    environment:
+      host: "localhost:29092"
+      max_idx: 3
+      idx: 0
+
+  producer_1:
+    network_mode: host
+    build: ./producer
+    restart: always
+    environment:
+      host: "localhost:29092"
+      max_idx: 3
+      idx: 1
+
+  producer_2:
+    network_mode: host
+    build: ./producer
+    restart: always
+    environment:
+      host: "localhost:29092"
+      max_idx: 3
+      idx: 2
