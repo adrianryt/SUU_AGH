@@ -99,7 +99,41 @@ To install all required packages etc., the best way is to use offical website fo
 - Kubectl - https://kubernetes.io/docs/tasks/tools/
 
 ## 7. How to reproduce - step by step
-### 1. Infrastructure as Code approach
+### 1. Run project with terraform!
+Important! Remember to first go through the step 5 and step 6! <br>
+First you need to clone the repo.
+```
+git clone git@github.com:adrianryt/SUU_AGH.git
+cd SUU_AGH
+```
+Next step is to run terraform commands.
+```
+cd resources/terraform
+terraform init
+terraform plan
+terraform apply
+```
+
+Then you need to wait for the cluster and pods to build. <br>
+After that check the connection and pods with kubectl.
+
+```
+kubectl get pods -n kafka
+```
+
+If everythink is running then the next step is to set the port forwarding for graphana
+
+```
+kubectl port-forward svc/grafana 3000:3000 -n kafka
+```
+
+The last step is to set up Prometheus <br>
+Go to the localhost:3000 <br>
+Login with credentials user: admin pass: admin <br>
+Open 'Source' tab and select 'Data sources' then choose Prometheus <br>
+In the url write 'http://prometheus-operated:9090/'
+Import jsons from resources directory
+
 ## 8. Demo deployment steps:
 ### 1. Configuration set-up
 ### 2. Data preparation
