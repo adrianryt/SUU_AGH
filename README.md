@@ -132,18 +132,29 @@ kubectl port-forward svc/grafana 3000:3000 -n kafka
 ```
 
 The last step is to set up Prometheus <br>
-Go to the localhost:3000 <br>
-Login with credentials user: admin pass: admin <br>
-Open 'Source' tab and select 'Data sources' then choose Prometheus <br>
-In the url write `http://prometheus-operated:9090/` <br>
-Import jsons from resources directory
+ - Go to the localhost:3000 <br>
+ - Login with credentials user: admin pass: admin <br>
+ - Open 'Source' tab and select 'Data sources' then choose Prometheus <br>
+ - In the url write `http://prometheus-operated:9090/` <br>
+ - Import all jsons from resources directory  
 ![image](https://github.com/adrianryt/SUU_AGH/assets/72470330/2f764adf-42ca-4884-9710-7f199b4e4b0a)
 
+## 8. Summary – conclusions
 
-## 8. Demo deployment steps:
-### 1. Configuration set-up
-### 2. Data preparation
-### 3. Execution procedure
-### 4. Results presentation
-## 9. Summary – conclusions
-## 10. References
+In conclusion, implementing Kafka on Kubernetes with Strimzi, Grafana, and Prometheus proved to be a highly effective solution for managing and monitoring data streaming pipelines. The combination of these technologies provided numerous benefits, such as scalability, resilience, and real-time visibility into the system's performance.
+
+One key advantage of using Strimzi, an open-source Kubernetes Operator for Apache Kafka, was its seamless integration with Kubernetes. Strimzi simplified the deployment, configuration, and management of Kafka clusters on Kubernetes, automating tasks such as scaling, rolling upgrades, and topic management. This streamlined approach significantly reduced the operational overhead and allowed teams to focus on application development and data processing.
+
+Grafana emerged as a powerful tool for visualizing Kafka metrics and monitoring the health of the Kafka clusters. With its intuitive dashboards and extensive plugin ecosystem, Grafana allowed us to gain valuable insights into the throughput, latency, and error rates of the Kafka infrastructure. This enabled us to proactively identify bottlenecks, optimize performance, and troubleshoot issues promptly.
+
+The integration of Prometheus with Kafka, Strimzi, and Grafana further enhanced the observability capabilities of the system. Prometheus effectively collected and stored time-series data, enabling the creation of custom alerts and the analysis of historical trends. By leveraging Prometheus exporters provided by Strimzi, we were able to gather detailed Kafka-specific metrics, including consumer lag, partition health, and network utilization, thereby facilitating proactive monitoring and maintenance.
+
+Overall, the combination of Kafka, Strimzi, Kubernetes, Grafana, and Prometheus provided a comprehensive solution for building and managing robust, scalable, and observable data streaming architectures. The integration of these technologies empowered teams to confidently develop, deploy, and monitor Kafka-based applications, ensuring efficient data processing and reliable messaging within complex distributed systems. The use of Strimzi simplified the management of Kafka clusters on Kubernetes, further enhancing the scalability and resilience of the overall solution.
+
+## 9. References
+
+[https://strimzi.io](Strimzi)
+[https://aws.amazon.com/eks/](AWS EKS)
+[https://prometheus.io](Prometheus)
+[https://grafana.com](Grafana)
+
