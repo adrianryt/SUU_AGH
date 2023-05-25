@@ -1,0 +1,144 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: producer-image
+spec:
+  selector:
+    matchLabels:
+      app: producer-image
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: producer-image
+    spec:
+      containers:
+        - name: producer-image
+          image: rysiekp/producer
+          env:
+            - name: host
+              value: my-cluster-kafka-bootstrap:9092
+            - name: max_idx
+              value: "3"
+            - name: idx
+              value: "0"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: producer-image
+spec:
+  selector:
+    matchLabels:
+      app: producer-image
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: producer-image
+    spec:
+      containers:
+        - name: producer-image
+          image: rysiekp/producer
+          env:
+            - name: host
+              value: my-cluster-kafka-bootstrap:9092
+            - name: max_idx
+              value: "3"
+            - name: idx
+              value: "1"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: producer-image
+spec:
+  selector:
+    matchLabels:
+      app: producer-image
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: producer-image
+    spec:
+      containers:
+        - name: producer-image
+          image: rysiekp/producer
+          env:
+            - name: host
+              value: my-cluster-kafka-bootstrap:9092
+            - name: max_idx
+              value: "3"
+            - name: idx
+              value: "2"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumer-image
+spec:
+  selector:
+    matchLabels:
+      app: consumer-image
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: consumer-image
+    spec:
+      containers:
+        - name: consumer-image
+          image: rysiekp/consumer
+          env:
+            - name: host
+              value: my-cluster-kafka-bootstrap:9092
+            - name: topics
+              value: "warm,cold"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumer-image
+spec:
+  selector:
+    matchLabels:
+      app: consumer-image
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: consumer-image
+    spec:
+      containers:
+        - name: consumer-image
+          image: rysiekp/consumer
+          env:
+            - name: host
+              value: my-cluster-kafka-bootstrap:9092
+            - name: topics
+              value: "light,cold"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumer-image
+spec:
+  selector:
+    matchLabels:
+      app: consumer-image
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: consumer-image
+    spec:
+      containers:
+        - name: consumer-image
+          image: rysiekp/consumer
+          env:
+            - name: host
+              value: my-cluster-kafka-bootstrap:9092
+            - name: topics
+              value: "dark"
+
