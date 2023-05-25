@@ -88,6 +88,10 @@ aws_access_key_id = <access_key>
 aws_secret_access_key = <secret_access_key>
 aws_session_token = <session_token>
 ```
+3. Next, go to terraform directory. Go to `variables.tf` and set required fields:
+  - `access_key, secret_key, session_token`  - same value as in `~/.aws/credentials`
+  - `role_arn` - this is LabRole Arn, which can be found in `IAM -> Roles ->  LabRole -> copy its arn`
+  - `separator` - Command line separator. If using windows use '&', if using macOS use ';'
 
 Now, your environment is prepared to move to the next step.
 
@@ -138,6 +142,13 @@ The last step is to set up Prometheus <br>
  - In the url write `http://prometheus-operated:9090/` <br>
  - Import all jsons from resources directory  
 ![image](https://github.com/adrianryt/SUU_AGH/assets/72470330/2f764adf-42ca-4884-9710-7f199b4e4b0a)
+
+After those steps, we need to deploy Kafka producers and consumers. To do it, please type in command line:
+```
+kubectl apply --server-side -f https://raw.githubusercontent.com/adrianryt/SUU_AGH/main/resources/yaml/prod-cons.yaml
+```
+
+That's all. Enjoy!
 
 ## 8. Summary – conclusions
 
