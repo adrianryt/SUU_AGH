@@ -180,7 +180,7 @@ Simply:
 
 When only one record is consumed with such settings, that is obvious that lag will grow really fast.
 
-![image](https://github.com/adrianryt/SUU_AGH/assets/72798812/60ea3a7d-3375-4a43-ae02-41ebe0cf7892)
+![image](https://github.com/adrianryt/SUU_AGH/assets/72798812/4b2441ff-0999-4b76-8315-bd7bad44d125)
 
 To resolve this issue, we can simply just set `fetch_max_wait_ms` in `prod-cons.yaml` to e.g. `500` and set `fetch_min_bytes` to `1`.
 After those changes, lag falls down until it reaches 0.
