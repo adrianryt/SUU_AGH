@@ -150,7 +150,23 @@ kubectl apply --server-side -f https://raw.githubusercontent.com/adrianryt/SUU_A
 
 That's all. Enjoy!
 
-## 8. Summary – conclusions
+## 8. Fetching metrics from Prometheus
+
+To fetch metrics from Prometheus, first thing we need to do is forward its port to localhost.
+To do so, please type:
+```shell
+kubectl port-forward svc/prometheus-operated 9090:9090 -n kafka
+```
+
+Then you can use scipt from `~/scripts/prometheus-metrics.py`.
+The only thing which should be changed is `query_name`. Possible values:
+  - kafka_consumergroup_current_offset
+  - kafka_topic_partitions
+  - kafka_controller_active_controller_count
+  - kafka_server_brokertopicmetrics_totalproducerequestspersec
+  - etc. ...
+
+## 9. Summary – conclusions
 
 In conclusion, implementing Kafka on Kubernetes with Strimzi, Grafana, and Prometheus proved to be a highly effective solution for managing and monitoring data streaming pipelines. The combination of these technologies provided numerous benefits, such as scalability, resilience, and real-time visibility into the system's performance.
 
@@ -162,10 +178,10 @@ The integration of Prometheus with Kafka, Strimzi, and Grafana further enhanced 
 
 Overall, the combination of Kafka, Strimzi, Kubernetes, Grafana, and Prometheus provided a comprehensive solution for building and managing robust, scalable, and observable data streaming architectures. The integration of these technologies empowered teams to confidently develop, deploy, and monitor Kafka-based applications, ensuring efficient data processing and reliable messaging within complex distributed systems. The use of Strimzi simplified the management of Kafka clusters on Kubernetes, further enhancing the scalability and resilience of the overall solution.
 
-## 9. References
+## 10. References
 
-[https://strimzi.io](Strimzi)
-[https://aws.amazon.com/eks/](AWS EKS)
-[https://prometheus.io](Prometheus)
-[https://grafana.com](Grafana)
+[Strimzi](https://strimzi.io)
+[AWS EKS](https://aws.amazon.com/eks/)
+[Prometheus](https://prometheus.io)
+[Grafana](https://grafana.com)
 
