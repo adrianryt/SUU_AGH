@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: producer-image
+  name: producer-image-0
 spec:
   selector:
     matchLabels:
-      app: producer-image
+      app: producer-image-0
   replicas: 1
   template:
     metadata:
       labels:
-        app: producer-image
+        app: producer-image-0
     spec:
       containers:
-        - name: producer-image
+        - name: producer-image-0
           image: rysiekp/producer
           env:
             - name: host
@@ -26,19 +26,19 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: producer-image
+  name: producer-image-1
 spec:
   selector:
     matchLabels:
-      app: producer-image
+      app: producer-image-1
   replicas: 1
   template:
     metadata:
       labels:
-        app: producer-image
+        app: producer-image-1
     spec:
       containers:
-        - name: producer-image
+        - name: producer-image-1
           image: rysiekp/producer
           env:
             - name: host
@@ -51,19 +51,19 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: producer-image
+  name: producer-image-2
 spec:
   selector:
     matchLabels:
-      app: producer-image
+      app: producer-image-2
   replicas: 1
   template:
     metadata:
       labels:
-        app: producer-image
+        app: producer-image-2
     spec:
       containers:
-        - name: producer-image
+        - name: producer-image-2
           image: rysiekp/producer
           env:
             - name: host
@@ -76,69 +76,87 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: consumer-image
+  name: consumer-image-0
 spec:
   selector:
     matchLabels:
-      app: consumer-image
+      app: consumer-image-0
   replicas: 1
   template:
     metadata:
       labels:
-        app: consumer-image
+        app: consumer-image-0
     spec:
       containers:
-        - name: consumer-image
+        - name: consumer-image-0
           image: rysiekp/consumer
           env:
             - name: host
               value: my-cluster-kafka-bootstrap:9092
             - name: topics
               value: "warm,cold"
+            - name: fetch_min_bytes
+              value: "2147483647"
+            - name: fetch_max_wait_ms
+              value: "100000"
+            - name: consumer_group
+              value: "group1"
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: consumer-image
+  name: consumer-image-1
 spec:
   selector:
     matchLabels:
-      app: consumer-image
+      app: consumer-image-1
   replicas: 1
   template:
     metadata:
       labels:
-        app: consumer-image
+        app: consumer-image-1
     spec:
       containers:
-        - name: consumer-image
+        - name: consumer-image-1
           image: rysiekp/consumer
           env:
             - name: host
               value: my-cluster-kafka-bootstrap:9092
             - name: topics
               value: "light,cold"
+            - name: fetch_min_bytes
+              value: "2147483647"
+            - name: fetch_max_wait_ms
+              value: "10000"
+            - name: consumer_group
+              value: "group2"
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: consumer-image
+  name: consumer-image-2
 spec:
   selector:
     matchLabels:
-      app: consumer-image
+      app: consumer-image-2
   replicas: 1
   template:
     metadata:
       labels:
-        app: consumer-image
+        app: consumer-image-2
     spec:
       containers:
-        - name: consumer-image
+        - name: consumer-image-2
           image: rysiekp/consumer
           env:
             - name: host
               value: my-cluster-kafka-bootstrap:9092
             - name: topics
               value: "dark"
+            - name: fetch_min_bytes
+              value: "2147483647"
+            - name: fetch_max_wait_ms
+              value: "10000"
+            - name: consumer_group
+              value: "group3"
 
