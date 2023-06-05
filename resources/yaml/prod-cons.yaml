@@ -98,7 +98,7 @@ spec:
             - name: fetch_min_bytes
               value: "2147483647"
             - name: fetch_max_wait_ms
-              value: "10000"
+              value: "100000"
             - name: consumer_group
               value: "group1"
 ---
