@@ -34,6 +34,7 @@ class Producer:
         try:
             self.producer.send(topic, message)
             self.producer.flush()
+            logging.info(f"{topic} - {message}")
 
         except KafkaError as ex:
 
