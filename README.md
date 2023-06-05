@@ -168,7 +168,7 @@ The only thing which should be changed is `query_name`. Possible values:
   - kafka_server_brokertopicmetrics_totalproducerequestspersec
   - etc. ...
 
-## How to experience a lag
+## 9 How to experience a lag
 
 Consumer lag is simply the delta between the consumer's last committed offset and the producer's end offset in the log. In other words, the consumer lag measures the delay between producing and consuming messages in any producer-consumer system.
 To achieve lag, we will change poll interval and max poll records for consumer.
@@ -180,12 +180,12 @@ Simply:
 
 When only one record is consumed each 20 seconds, that is obvious that lag will grow really fast.
 
-
+![image](https://github.com/adrianryt/SUU_AGH/assets/72798812/60ea3a7d-3375-4a43-ae02-41ebe0cf7892)
 
 To resolve this issue, we can simply just set `max_poll_records` in `prod-cons.yaml` to e.g. `500` and set `poll_interval` to `0`.
 After those changes, lag falls down until it reaches 0.
 
-## 9. Summary – conclusions
+## 10. Summary – conclusions
 
 In conclusion, implementing Kafka on Kubernetes with Strimzi, Grafana, and Prometheus proved to be a highly effective solution for managing and monitoring data streaming pipelines. The combination of these technologies provided numerous benefits, such as scalability, resilience, and real-time visibility into the system's performance.
 
@@ -197,7 +197,7 @@ The integration of Prometheus with Kafka, Strimzi, and Grafana further enhanced 
 
 Overall, the combination of Kafka, Strimzi, Kubernetes, Grafana, and Prometheus provided a comprehensive solution for building and managing robust, scalable, and observable data streaming architectures. The integration of these technologies empowered teams to confidently develop, deploy, and monitor Kafka-based applications, ensuring efficient data processing and reliable messaging within complex distributed systems. The use of Strimzi simplified the management of Kafka clusters on Kubernetes, further enhancing the scalability and resilience of the overall solution.
 
-## 10. References
+## 11. References
 
 [Strimzi](https://strimzi.io)
 [AWS EKS](https://aws.amazon.com/eks/)
