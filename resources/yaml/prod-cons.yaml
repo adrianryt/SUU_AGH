@@ -95,10 +95,10 @@ spec:
               value: my-cluster-kafka-bootstrap:9092
             - name: topics
               value: "warm,cold"
-            - name: poll_interval
-              value: "20"
-            - name: max_poll_records
-              value: "1"
+            - name: fetch_min_bytes
+              value: "2147483647"
+            - name: fetch_max_wait_ms
+              value: "10000"
             - name: consumer_group
               value: "group1"
 ---
@@ -124,10 +124,10 @@ spec:
               value: my-cluster-kafka-bootstrap:9092
             - name: topics
               value: "light,cold"
-            - name: poll_interval
-              value: "20"
-            - name: max_poll_records
-              value: "1"
+            - name: fetch_min_bytes
+              value: "2147483647"
+            - name: fetch_max_wait_ms
+              value: "10000"
             - name: consumer_group
               value: "group2"
 ---
@@ -153,10 +153,10 @@ spec:
               value: my-cluster-kafka-bootstrap:9092
             - name: topics
               value: "dark"
-            - name: poll_interval
-              value: "20"
-            - name: max_poll_records
-              value: "1"
+            - name: fetch_min_bytes
+              value: "2147483647"
+            - name: fetch_max_wait_ms
+              value: "10000"
             - name: consumer_group
               value: "group3"
 

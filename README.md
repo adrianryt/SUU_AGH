@@ -171,18 +171,18 @@ The only thing which should be changed is `query_name`. Possible values:
 ## 9 How to experience a lag
 
 Consumer lag is simply the delta between the consumer's last committed offset and the producer's end offset in the log. In other words, the consumer lag measures the delay between producing and consuming messages in any producer-consumer system.
-To achieve lag, we will change poll interval and max poll records for consumer.
+To achieve lag, we will change fetch min bytes and fetch max wait ms records for consumer.
 This should be able to overload Kafka topic.
 
 ### Prove that lag happens
 
 Simply:
 
-When only one record is consumed each 20 seconds, that is obvious that lag will grow really fast.
+When only one record is consumed with such settings, that is obvious that lag will grow really fast.
 
 ![image](https://github.com/adrianryt/SUU_AGH/assets/72798812/60ea3a7d-3375-4a43-ae02-41ebe0cf7892)
 
-To resolve this issue, we can simply just set `max_poll_records` in `prod-cons.yaml` to e.g. `500` and set `poll_interval` to `0`.
+To resolve this issue, we can simply just set `fetch_max_wait_ms` in `prod-cons.yaml` to e.g. `500` and set `fetch_min_bytes` to `1`.
 After those changes, lag falls down until it reaches 0.
 
 ## 10. Summary – conclusions
