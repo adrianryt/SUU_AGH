@@ -137,15 +137,14 @@ kubectl port-forward svc/grafana 3000:3000 -n kafka
 
 The last step is to set up Prometheus <br>
  - Go to the localhost:3000 <br>
- - Login with credentials user: admin pass: admin <br>
+ - Login with credentials user: `admin` pass: `admin` <br>
  - Open 'Source' tab and select 'Data sources' then choose Prometheus <br>
  - In the url write `http://prometheus-operated:9090/` <br>
  - Import all jsons from resources directory  
 ![image](https://github.com/adrianryt/SUU_AGH/assets/72470330/2f764adf-42ca-4884-9710-7f199b4e4b0a)
-
 After those steps, we need to deploy Kafka producers and consumers. To do it, please type in command line:
-```
-kubectl apply --server-side -f https://raw.githubusercontent.com/adrianryt/SUU_AGH/main/resources/yaml/prod-cons.yaml
+```shell
+kubectl apply --server-side -f https://raw.githubusercontent.com/adrianryt/SUU_AGH/main/resources/yaml/prod-cons.yaml -n kafka
 ```
 
 That's all. Enjoy!
@@ -165,6 +164,23 @@ The only thing which should be changed is `query_name`. Possible values:
   - kafka_controller_active_controller_count
   - kafka_server_brokertopicmetrics_totalproducerequestspersec
   - etc. ...
+
+## How to experience a lag
+
+Consumer lag is simply the delta between the consumer's last committed offset and the producer's end offset in the log. In other words, the consumer lag measures the delay between producing and consuming messages in any producer-consumer system.
+To achieve lag, we will change poll interval and max poll records for consumer.
+This should be able to overload Kafka topic.
+
+### Prove that lag happens
+
+Simply:
+
+When only one record is consumed each 20 seconds, that is obvious that lag will grow really fast.
+
+
+
+To resolve this issue, we can simply just set `max_poll_records` in `prod-cons.yaml` to e.g. `500` and set `poll_interval` to `0`.
+After those changes, lag falls down until it reaches 0.
 
 ## 9. Summary – conclusions
 
