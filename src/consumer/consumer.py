@@ -16,7 +16,8 @@ class Consumer:
         print(self.kafka_topic)
         self.consumer = KafkaConsumer(
             bootstrap_servers=self.kafka_host,
-            max_poll_records=int(os.getenv("max_poll_records", "500")),
+            fetch_min_bytes=int(os.getenv("fetch_min_bytes", "2147483647")),
+            fetch_max_wait_ms=int(os.getenv("fetch_max_wait_ms", "10000")),
             group_id=os.getenv("consumer_group", None)
         )
         self.consumer.subscribe(self.kafka_topic)
@@ -31,13 +32,5 @@ if __name__ == "__main__":
     import sys
     consumer = Consumer(sys.argv[1], [topic for topic in sys.argv[2].split(",")])
 
-    interval = os.getenv("poll_interval")
-
-    print(interval)
-
     while True:
         consumer.consume_from_kafka()
-        if interval:
-            time.sleep(int(interval))
-        else:
-            time.sleep(random.randint(25, 75) / 100)
