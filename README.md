@@ -148,6 +148,9 @@ After those steps, we need to deploy Kafka producers and consumers. To do it, pl
 kubectl apply --server-side -f https://raw.githubusercontent.com/adrianryt/SUU_AGH/main/resources/yaml/prod-cons.yaml
 ```
 
+![image](https://github.com/adrianryt/SUU_AGH/assets/30171233/38af712d-5ba6-4fee-a07f-a95f1389f2d8)
+
+
 That's all. Enjoy!
 
 ## 8. Fetching metrics from Prometheus
