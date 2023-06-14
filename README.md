@@ -192,12 +192,15 @@ To run performance tests on producer, first create a new topic or use existing, 
 ```
 kubectl run kafka-producer-performance -ti --image=strimzi/kafka:0.20.1-kafka-2.5.0 --rm=true --restart=Never -n kafka -- bin/kafka-producer-perf-test.sh --topic <topic_name> --num-records 1000000 --record-size 100 --throughput 100000 --producer-props bootstrap.servers=my-cluster-kafka-bootstrap:9092
 ```
+![Screenshot 2023-06-14 at 22 17 41](https://github.com/adrianryt/SUU_AGH/assets/72470330/702c36fc-6845-44f2-bf8b-ab17fb4a4122)
+
 
 To run performance tests on consumer, first create a new topic or use existing, and then run command
 
 ```
 kubectl run kafka-consumer-performance --image=strimzi/kafka:0.20.1-kafka-2.5.0 --restart=Never -n kafka --attach --rm -- bin/kafka-consumer-perf-test.sh --bootstrap-server=my-cluster-kafka-bootstrap:9092 --messages=10000 --threads=5 --group=consumer-group --print-metrics --topic=my-topic
 ```
+![Screenshot 2023-06-14 at 22 17 19](https://github.com/adrianryt/SUU_AGH/assets/72470330/72b2d765-f170-4462-86ac-9fe430396a18)
 
 ## 11. Summary – conclusions
 
