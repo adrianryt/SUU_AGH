@@ -187,6 +187,14 @@ After those changes, lag falls down until it reaches 0.
 
 ## 10 Performance tests
 
+To change default topic's partitions and replicas value change the kafka-ephemeral.yaml as follow:
+```
+spec:
+  kafka:
+    config:
+      num.partitions: n
+      offsets.topic.replication.factor: m
+```
 To run performance tests on producer, first create a new topic or use existing, and then run command
 
 ```
