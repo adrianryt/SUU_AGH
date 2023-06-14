@@ -192,15 +192,23 @@ To run performance tests on producer, first create a new topic or use existing, 
 ```
 kubectl run kafka-producer-performance -ti --image=strimzi/kafka:0.20.1-kafka-2.5.0 --rm=true --restart=Never -n kafka -- bin/kafka-producer-perf-test.sh --topic <topic_name> --num-records 1000000 --record-size 100 --throughput 100000 --producer-props bootstrap.servers=my-cluster-kafka-bootstrap:9092
 ```
+1 Partition and 3 replicas
 ![Screenshot 2023-06-14 at 22 17 41](https://github.com/adrianryt/SUU_AGH/assets/72470330/702c36fc-6845-44f2-bf8b-ab17fb4a4122)
 
+4 Partition and 1 replica
+![Screenshot 2023-06-14 at 22 31 32](https://github.com/adrianryt/SUU_AGH/assets/72470330/4cb8bb5d-8522-48d6-9e1f-27000edad41c)
 
 To run performance tests on consumer, first create a new topic or use existing, and then run command
 
 ```
 kubectl run kafka-consumer-performance --image=strimzi/kafka:0.20.1-kafka-2.5.0 --restart=Never -n kafka --attach --rm -- bin/kafka-consumer-perf-test.sh --bootstrap-server=my-cluster-kafka-bootstrap:9092 --messages=10000 --threads=5 --group=consumer-group --print-metrics --topic=my-topic
 ```
+
+1 Partition and 3 replicas
 ![Screenshot 2023-06-14 at 22 17 19](https://github.com/adrianryt/SUU_AGH/assets/72470330/72b2d765-f170-4462-86ac-9fe430396a18)
+
+4 Partition and 1 replica
+![Screenshot 2023-06-14 at 22 32 55](https://github.com/adrianryt/SUU_AGH/assets/72470330/d2a2c6f8-716d-4ee0-be27-9f3e73331505)
 
 ## 11. Summary – conclusions
 
