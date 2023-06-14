@@ -185,7 +185,21 @@ When only one record is consumed with such settings, that is obvious that lag wi
 To resolve this issue, we can simply just set `fetch_max_wait_ms` in `prod-cons.yaml` to e.g. `500` and set `fetch_min_bytes` to `1`.
 After those changes, lag falls down until it reaches 0.
 
-## 10. Summary – conclusions
+## 10 Performance tests
+
+To run performance tests on producer, first create a new topic or use existing, and then run command
+
+```
+kubectl run kafka-producer-performance -ti --image=strimzi/kafka:0.20.1-kafka-2.5.0 --rm=true --restart=Never -n kafka -- bin/kafka-producer-perf-test.sh --topic <topic_name> --num-records 1000000 --record-size 100 --throughput 100000 --producer-props bootstrap.servers=my-cluster-kafka-bootstrap:9092
+```
+
+To run performance tests on consumer, first create a new topic or use existing, and then run command
+
+```
+kubectl run kafka-consumer-performance -ti --image=strimzi/kafka:0.20.1-kafka-2.5.0 --rm=true --restart=Never -n kafka -- bin/kafka-consumer-perf-test.sh --topic <topic_name> --num-records 1000000 --record-size 100 --throughput 100000 --producer-props bootstrap.servers=my-cluster-kafka-bootstrap:9092
+```
+
+## 11. Summary – conclusions
 
 In conclusion, implementing Kafka on Kubernetes with Strimzi, Grafana, and Prometheus proved to be a highly effective solution for managing and monitoring data streaming pipelines. The combination of these technologies provided numerous benefits, such as scalability, resilience, and real-time visibility into the system's performance.
 
